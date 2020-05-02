@@ -21,7 +21,7 @@ pipeline {
         }
         stage ('run project') {
             steps {
-                sh 'java -jar target/*.jar &'
+                sh 'java -jar target/*.jar'
             }
         }
     }
