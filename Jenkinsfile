@@ -37,7 +37,13 @@ pipeline {
 
             echo "$userInput";
 
-            steps.git url: "https://github.com/kd2dhamecha/website_springboot.git" , branch: "$userInput"
+            // steps.git url: "https://github.com/kd2dhamecha/website_springboot.git" , branch: "$userInput"
+
+        checkout ( [$class: 'GitSCM',
+        branches: [[name: $userInput ]],
+        userRemoteConfigs: [[
+            credentialsId: 'kd2dhamecha', 
+            url: 'https://github.com/kd2dhamecha/website_springboot.git']]])
 
             }
             }else{
