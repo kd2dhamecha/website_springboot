@@ -1,3 +1,6 @@
+def gitBranch = "master"
+
+
 pipeline {
     agent any
     tools { 
@@ -37,7 +40,7 @@ pipeline {
 
             }
             }else{
-              println('Cause: ' + currentBuild.getBuildCauses('hudson.model.Cause$RemoteCause') + '\n calling devBuildAndDeploy()....')
+              println('Cause: ' + currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause') + '\n calling devBuildAndDeploy()....')
               echo "auto initiated"
             }
           }
