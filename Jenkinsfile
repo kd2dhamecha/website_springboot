@@ -13,6 +13,36 @@ pipeline {
                 ''' 
             }
         }
+        stage('Hello') {
+         steps {
+            script {
+
+            echo "${currentBuild.buildCauses}" // same as currentBuild.getBuildCauses()
+            echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
+            echo "${currentBuild.getBuildCauses('hudson.triggers.TimerTrigger$TimerTriggerCause')}"
+
+            if ("${gitBranch}" == "master") {
+            if(currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')){
+            println('Cause: ' + currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause') + '\n calling devBuildAndDeploy()....')
+
+            echo "user initiated"
+
+             def userInput = input(id: 'userInput', message: 'Merge to?',
+             parameters: [[$class: 'StringParameterDefinition', defaultValue: 'dev', 
+                description:'describing choices', name:'commitid']
+             ])
+
+            echo "$userInput";
+
+
+            }
+            }else{
+              println('Cause: ' + currentBuild.getBuildCauses('hudson.model.Cause$RemoteCause') + '\n calling devBuildAndDeploy()....')
+              echo "auto initiated"
+            }
+          }
+         }
+        }
 
         stage ('Build') {
             steps {
