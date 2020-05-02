@@ -40,7 +40,7 @@ pipeline {
             // steps.git url: "https://github.com/kd2dhamecha/website_springboot.git" , branch: "$userInput"
 
         checkout ( [$class: 'GitSCM',
-        branches: [[name: $userInput ]],
+        branches: [[name: "$userInput" ]],
         userRemoteConfigs: [[
             credentialsId: 'kd2dhamecha', 
             url: 'https://github.com/kd2dhamecha/website_springboot.git']]])
