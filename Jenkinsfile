@@ -19,5 +19,10 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+        stage ('run project') {
+            steps {
+                sh 'java -jar target/*.jar'
+            }
+        }
     }
 }
