@@ -37,6 +37,7 @@ pipeline {
 
             echo "$userInput";
 
+            steps.git url: "https://github.com/kd2dhamecha/website_springboot.git" , branch: "$userInput"
 
             }
             }else{
