@@ -30,8 +30,8 @@ pipeline {
 
             echo "user initiated"
 
-             def userInput = input(id: 'userInput', message: 'Merge to?',
-             parameters: [[$class: 'StringParameterDefinition', defaultValue: 'dev', 
+             def userInput = input(id: 'userInput', message: 'Commit_id',
+             parameters: [[$class: 'StringParameterDefinition', defaultValue: 'null', 
                 description:'describing choices', name:'commitid']
              ])
 
