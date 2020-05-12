@@ -46,9 +46,12 @@ pipeline {
             url: 'https://github.com/kd2dhamecha/website_springboot.git']]])
 
             }
+
+            echo(gitBranch,userInput)
             }else{
               println('Cause: ' + currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause') + '\n calling devBuildAndDeploy()....')
               echo "auto initiated"
+              echo(gitBranch,userInput)
             }
           }
          }
@@ -65,4 +68,9 @@ pipeline {
             }
         }
     }
+}
+
+def echo(gitBranch,userInput){
+    echo "$gitBranch"
+    echo "$userInput"
 }
