@@ -36,6 +36,8 @@ pipeline {
              ])
 
             echo "$userInput";
+            devBuildAndDeploy(gitBranch,userInput)
+
 
             // steps.git url: "https://github.com/kd2dhamecha/website_springboot.git" , branch: "$userInput"
 
@@ -46,8 +48,6 @@ pipeline {
             url: 'https://github.com/kd2dhamecha/website_springboot.git']]])
 
             }
-
-            devBuildAndDeploy(gitBranch,userInput)
             }else{
               println('Cause: ' + currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause') + '\n calling devBuildAndDeploy()....')
               echo "auto initiated"
