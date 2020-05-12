@@ -47,11 +47,11 @@ pipeline {
 
             }
 
-            echo(gitBranch,userInput)
+            devBuildAndDeploy(gitBranch,userInput)
             }else{
               println('Cause: ' + currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause') + '\n calling devBuildAndDeploy()....')
               echo "auto initiated"
-              echo(gitBranch,userInput)
+              devBuildAndDeploy(gitBranch,userInput)
             }
           }
          }
@@ -70,7 +70,7 @@ pipeline {
     }
 }
 
-def echo(gitBranch,userInput){
+def devBuildAndDeploy(gitBranch,userInput){
     echo "$gitBranch"
     echo "$userInput"
 }
