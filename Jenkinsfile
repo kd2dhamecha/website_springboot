@@ -51,7 +51,7 @@ pipeline {
             }else{
               println('Cause: ' + currentBuild.getBuildCauses('hudson.model.Cause$BranchIndexingCause') + '\n calling devBuildAndDeploy()....')
               echo "auto initiated"
-              devBuildAndDeploy(gitBranch,userInput)
+              devBuildAndDeploy(gitBranch)
             }
           }
          }
